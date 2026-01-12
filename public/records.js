@@ -20,7 +20,7 @@ function loadRecords() {
 
 loadRecords();
 
-// Delete patient
+
 function del(id) {
   if (confirm("Delete record?")) {
     fetch("/delete/" + id, { method: "DELETE" })
@@ -28,7 +28,7 @@ function del(id) {
   }
 }
 
-// Update patient → redirect to main form with pre-filled data
+
 function update(id) {
   fetch("/search", {
     method: "POST",
