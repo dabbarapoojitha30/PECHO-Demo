@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const editPatient = localStorage.getItem("editPatient");
   if (editPatient) {
     const p = JSON.parse(editPatient);
-    patientId.value = p.id; // ID cannot be changed
-    patientId.disabled = true; // prevent user from editing ID
+    patientId.value = p.id; 
+    patientId.disabled = true; 
     patientName.value = p.name;
     age.value = p.age;
     document.querySelector("[name=dob]").value = p.dob;
