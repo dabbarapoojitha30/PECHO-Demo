@@ -5,13 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchResult = document.getElementById("searchResult");
   const downloadPdfBtn = document.getElementById("downloadPdfBtn");
 
-  // Fill age dropdown
   age.innerHTML = `<option value="">Select</option>`;
   for (let i = 1; i <= 100; i++) {
     age.innerHTML += `<option>${i}</option>`;
   }
 
-  // Check if editing patient
   const editPatient = localStorage.getItem("editPatient");
   if (editPatient) {
     const p = JSON.parse(editPatient);
@@ -25,11 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("[name=observation]").value = p.observation;
     document.querySelector("[name=diagnosis]").value = p.diagnosis;
 
-    // Remove from localStorage after pre-filling
     localStorage.removeItem("editPatient");
   }
 
-  // Add / Update patient
   document.getElementById("addForm").addEventListener("submit", e => {
     e.preventDefault();
 
