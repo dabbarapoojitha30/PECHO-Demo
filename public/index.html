@@ -19,27 +19,27 @@
 
       <div class="Input left">
         <label>Patient ID</label>
-        <input type="text" class="form-control" id="patientId">
+        <input type="text" class="form-control" id="patientId" required>
       </div>
 
       <div class="Input right">
         <label>Age</label>
-        <select class="form-select" id="age"></select>
+        <select class="form-select" id="age" required></select>
       </div>
 
       <div class="Input left">
         <label>Name</label>
-        <input type="text" class="form-control" id="patientName">
+        <input type="text" class="form-control" id="patientName" required>
       </div>
 
       <div class="Input right">
         <label>Date of Birth</label>
-        <input type="date" class="form-control" name="dob">
+        <input type="date" class="form-control" name="dob" required>
       </div>
 
       <div class="Input left">
         <label>Sex</label>
-        <select class="form-select" name="sex">
+        <select class="form-select" name="sex" required>
           <option value="">Select</option>
           <option>Male</option>
           <option>Female</option>
@@ -48,7 +48,7 @@
 
       <div class="Input right">
         <label>Weight (kg)</label>
-        <input type="number" class="form-control" name="weight">
+        <input type="number" class="form-control" name="weight" required>
       </div>
 
       <div class="Input full">
@@ -74,7 +74,7 @@
     <form id="searchform">
       <div class="Input">
         <label>Patient ID</label>
-        <input class="form-control" name="id">
+        <input class="form-control" name="id" required>
       </div>
       <button class="btn btn-success w-100">Search</button>
     </form>
