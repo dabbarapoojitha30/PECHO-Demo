@@ -6,10 +6,8 @@ const db = require("./db");
 const app = express();
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public"))); // serve frontend
+app.use(express.static(path.join(__dirname, "public")));
 
-// ------------------ ADD NEW OR UPDATE ------------------
-// If ID exists → update, else insert
 app.post("/add", async (req, res) => {
   const p = req.body;
 
@@ -17,7 +15,7 @@ app.post("/add", async (req, res) => {
     const existing = await db.query("SELECT * FROM patients WHERE id=$1", [p.id]);
 
     if (existing.rows.length) {
-      // Update existing patient
+  
       await db.query(
         `UPDATE patients SET name=$1, age=$2, sex=$3, dob=$4, weight=$5, observation=$6, diagnosis=$7 WHERE id=$8`,
         [p.name, p.age, p.sex, p.dob, p.weight, p.observation, p.diagnosis, p.id]
@@ -25,7 +23,6 @@ app.post("/add", async (req, res) => {
       return res.json({ message: "Patient updated successfully" });
     }
 
-    // Insert new patient
     await db.query(
       `INSERT INTO patients (id,name,age,sex,dob,weight,observation,diagnosis)
        VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`,
@@ -40,7 +37,6 @@ app.post("/add", async (req, res) => {
   }
 });
 
-// ------------------ SEARCH PATIENT ------------------
 app.post("/search", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM patients WHERE id=$1", [req.body.id]);
@@ -53,7 +49,7 @@ app.post("/search", async (req, res) => {
   }
 });
 
-// ------------------ GET ALL PATIENTS ------------------
+
 app.get("/all", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM patients ORDER BY id");
@@ -63,7 +59,7 @@ app.get("/all", async (req, res) => {
   }
 });
 
-// ------------------ DELETE PATIENT ------------------
+
 app.delete("/delete/:id", async (req, res) => {
   try {
     await db.query("DELETE FROM patients WHERE id=$1", [req.params.id]);
